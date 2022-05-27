@@ -5,6 +5,7 @@ import { Container, Typography } from "@material-ui/core";
 import 'fontsource-roboto';
 import { validarCPF, validarSenha } from "./models/cadastro"
 import ValidacoesCadastro from './contexts/ValidacoesCadastro';
+import Axios from 'axios';
 
 class App extends Component {
   render() {
@@ -24,7 +25,13 @@ class App extends Component {
 }
 
 function aoEnviarForm(dados) {
-  console.log(dados);
+  /* console.log(dados); */
+  Axios.post("http://localhost:3001/register", {
+    email: dados.email,
+    senha: dados.senha
+  }).then((response) => {
+    console.log(response);
+  })
 }
 
 
